@@ -9,7 +9,7 @@ public class EfficientWordMarkov extends WordMarkovModel{
 	
 	public EfficientWordMarkov(int order) {
 		super(order);
-		myOrder = order;
+		//myOrder = order;
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	//	myMap = new TreeMap<WordGram, ArrayList<String>>();
 	}
@@ -18,8 +18,7 @@ public class EfficientWordMarkov extends WordMarkovModel{
 			myWords = text.split("\\s+");
 			myMap.clear();
 			WordGram wg = new WordGram(myWords,0,myOrder);
-			for (int i=0;i<(myWords.length-myOrder);i++) {
-				//WordGram wg = new WordGram(myWords,i,myOrder);
+			for (int i=0;i<=(myWords.length-myOrder);i++) {
 				if (!myMap.containsKey(wg)) {
 					ArrayList<String> let = new ArrayList<String>();
 					myMap.put(wg,let);
@@ -27,9 +26,8 @@ public class EfficientWordMarkov extends WordMarkovModel{
 				if (i+myOrder >= myWords.length){
 					myMap.get(wg).add(PSEUDO_EOS);}
 				else {
-					//String next = myWords[i+myOrder+1];
 				myMap.get(wg).add(myWords[i+myOrder]);
-				wg = wg.shiftAdd(myWords[i+myOrder]);}
+				wg = wg.shiftAdd(myWords[i+myOrder+1]);}
 				}
 			}
 		
