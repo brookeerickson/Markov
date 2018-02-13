@@ -9,7 +9,6 @@ public class EfficientWordMarkov extends WordMarkovModel{
 	
 	public EfficientWordMarkov(int order) {
 		super(order);
-		//myOrder = order;
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	//	myMap = new TreeMap<WordGram, ArrayList<String>>();
 	}
@@ -29,6 +28,7 @@ public class EfficientWordMarkov extends WordMarkovModel{
 				myMap.get(wg).add(myWords[i+myOrder]);
 				wg = wg.shiftAdd(myWords[i+myOrder]);}
 				}
+	//		System.out.println(myMap.keySet().size());
 			}
 		
 		@Override

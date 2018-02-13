@@ -20,11 +20,11 @@ public class Benchmark {
 	 * @param order of the markov model returned
 	 * @return a model that implements the proper interface
 	 */
-	private static MarkovInterface<String> getMarkov(int order) {
-	//private static MarkovInterface<WordGram> EfficientWordMarkov(int order) {
+//	private static MarkovInterface<String> getMarkov(int order) {
+	private static MarkovInterface<WordGram> getMarkov(int order) {
 		//return new MarkovModel(order);
-		return new EfficientMarkov(order);
-		//return new EfficientWordMarkov(order);
+		//return new EfficientMarkov(order);
+		return new EfficientWordMarkov(order);
 	}
 	
 	/**
@@ -41,8 +41,8 @@ public class Benchmark {
 		double[] times = new double[TRIALS];
 		for (int i = 0; i < TRIALS; i++) {			
 			double start = System.nanoTime();
-			MarkovInterface<String> model = getMarkov(k);
-		//	MarkovInterface<String> model = new EfficientWordMarkov(k);
+			//MarkovInterface<String> model = getMarkov(k);
+			MarkovInterface<WordGram> model = getMarkov(k);
 			model.setTraining(source);
 			Thread thread = new Thread(() -> {
 				String dummy = model.getRandomText(textLength);
@@ -134,7 +134,7 @@ public class Benchmark {
 		Collections.sort(files, Comparator.comparing(File::length));
 		
 		int order = 5;
-		int randomLength = 400;
+		int randomLength = 2000;
 		System.out.printf("Varying file length, using k %d and text length %d\n", 5, randomLength);
 		System.out.println("\nunique\tsize\tname\t#chars\tmean\tsigma\n");
 		for (File f : files) {

@@ -81,21 +81,37 @@ order	#chars	source	mean		sigma
 5		16000	496768	0.147	0.002
 10		16000	496768	0.440	0.011
 
-Using EfficientMarkov changes the runtimes significantly and reduces the time necessary
-significantly. Using this class, the longest runtimes for a specific number of characters
+Using EfficientMarkov changes the run times significantly and reduces the time necessary
+significantly. Using this class, the longest run times for a specific number of characters
 occurs at order 10 instead of at order 1 like before. In this case, there is not a large
-difference between the k-order runtimes as the number of characters change within a source.
-Similarly to problem 1, the runtimes from alice.txt to hawthorne.txt are about doubled. Therefore,
-I will use a similar approach to say that the runtime for 16,000 characters of a 5-order out of
+difference between the k-order run times as the number of characters change within a source.
+Similarly to problem 1, the run times from alice.txt to hawthorne.txt are about doubled. Therefore,
+I will use a similar approach to say that the runtime for 16,000 characters of a 5-order Markov out of
 a 5.5 million character source will be about (0.147)*(2^10) = 150 mean seconds.
 
 %%%%
 PROBLEM 4:
 On average, when running the MarkovDriver with EfficientMarkov Class to generate 5,000
-characters for a 5-order Markov process, 448 characters were generated.
+characters for a 5-order Markov process, 448 characters were generated. This is due to 
+the fact that the testfile.txt only has about 330 so despite the effort to generate 
+5,000 characters, you will not be able to do so and will end up with a number much closer
+to 330.
 
 %%%%
 PROBLEM 5:
+For 2000 characters...
+Number of Keys		HashMap Run Time			TreeMap Run Time
+8122						0.002					0.007
+31012					0.008					0.035
+42634					0.015					0.061
+42016					0.016					0.062
+82337					0.122					0.331
+180176					1.533					4.600
 
+The run times for both the HashMap and the TreeMap increase linearly and significantly as the number of keys increases.
+Additionally, the run times for the TreeMap are larger because a TreeMap is sorted. Therefore, for a TreeMap, 
+it must go through the map each time to place the key in the alphabetic order and this order is not the same 
+as the order of the file. The TreeMap must use the compareTo method and it must access the values by going through a large
+"tree". HashMaps use O(1) or O(n) depending on collisions while TreeMaps use O(logn). 
 
 %%%%
