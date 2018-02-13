@@ -64,7 +64,7 @@ public class WordGram implements Comparable<WordGram>{
 		String[] words = new String[myWords.length];
 		for (int k=0; k<myWords.length-1; k++) {
 			words[k] = myWords[k+1];}
-		words[myWords.length-1] = last;
+		words[(myWords.length)-1] = last;
 		return new WordGram(words,0,words.length);
 	}
 }

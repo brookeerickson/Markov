@@ -27,7 +27,7 @@ public class EfficientWordMarkov extends WordMarkovModel{
 					myMap.get(wg).add(PSEUDO_EOS);}
 				else {
 				myMap.get(wg).add(myWords[i+myOrder]);
-				wg = wg.shiftAdd(myWords[i+myOrder+1]);}
+				wg = wg.shiftAdd(myWords[i+myOrder]);}
 				}
 			}
 		
