@@ -11,7 +11,8 @@ import java.util.*;
 public class MarkovDriver {
 	public static void main(String[] args) {
 		//String filename = "data/trump-un-sept19-17.txt";
-		String filename = "data/jfk-un-sept25-61.txt";
+		//String filename = "data/jfk-un-sept25-61.txt";
+		String filename = "data/testfile.txt";
 		if (args.length > 0) {
 			filename = args[1];
 		}
@@ -20,9 +21,9 @@ public class MarkovDriver {
 	
 		double start = System.nanoTime();
 		for(int k=1; k <= 5; k++) {
-			MarkovInterface<String> markov = new MarkovModel(k); 
+			MarkovInterface<String> markov = new EfficientMarkov(k); 
 			markov.setTraining(text);
-			String random = markov.getRandomText(200);
+			String random = markov.getRandomText(5000);
 			System.out.printf("%d markov model with %d chars\n", k,random.length());
 			printNicely(random,60);
 		}

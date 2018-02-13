@@ -1,22 +1,101 @@
-Name: [firstname lastname]
-NetID: [abc123]
-Hours Spent: [Give an exact (decimal) number here]
-Consulted With: [provide names or NetIDs of any students, TAs, or professors you consulted with on the assignment. If you did not consult with anyone, you must explicitly write NONE.]
-Resources Used: [Any books, papers, or online resources. If you did not use any outside resources, you must explicitly write NONE]
-Impressions: [Your answer here]
+Name: [Brooke Erickson]
+NetID: [bce14]
+Hours Spent: [7.5]
+Consulted With: [UTA's in office hours]
+Resources Used: [Java API, stackoverflow]
+Impressions: [This assignment was quite difficult to understand the directions and the 
+point of the assignment. I think that this assignment could be more helpful later in the semester 
+once we have learned more.]
 %%%%
 PROBLEM 1:
+alice.txt
+order	#chars	source	mean		sigma
+1		2000		163187	0.873	0.025
+5		2000		163187	0.079	0.000
+10		2000		163187	0.075	0.000
+1		4000		163187	1.684	0.002
+5		4000		163187	0.165	0.000
+10		4000		163187	0.215	0.003
+1		8000		163187	3.532	0.034
+5		8000		163187	0.341	0.000
+10		8000		163187	0.307	0.000
+1		16000	163187	6.899	0.023
+5		16000	163187	0.677	0.001
+10		16000	163187	0.609	0.000
+
+hawthorne.txt
+order	#chars	source	mean		sigma
+1		2000		496768	4.410	0.077
+5		2000		496768	0.328	0.000
+10		2000		496768	0.358	0.001
+1		4000		496768	8.317	0.045
+5		4000		496768	0.683	0.000
+10		4000		496768	0.646	0.001
+1		8000		496768	16.700	0.078
+5		8000		496768	1.370	0.002
+10		8000		496768	1.318	0.005
+1		16000	496768	33.769	0.526
+5		16000	496768	2.661	0.012
+10		16000	496768	2.015	0.010
 
 %%%%
-PROBLEM 2:
+PROBLEM 2: The runtime is longer when the length of the training text is longer and
+is also longer when the order is smaller. This occurs because an order of 1 goes through
+every single word whereas an order of 10 goes through every 10 words. Additionally, as
+the number of characters doubles, the mean runtime also doubles. To generate 16,000
+characters for a 5-order Markov for a 5.5 million character source would take an extremely
+long time. Since the average time doubled from about 160,000 characters to 500,000, an estimation
+would be to conclude that the runtime will about double for every 500,000 characters
+added to the source. This will occur 10 more times to get to 5.5 million characters total 
+so you can expect the total runtime to be (2.661)*(2^10) is about 2.5*1024 = 2,560 mean seconds.
 
 %%%%
 PROBLEM 3:
+alice.txt
+order	#chars	source	mean		sigma
+1		2000		163187	0.056	0.000
+5		2000		163187	0.041	0.000
+10		2000		163187	0.203	0.024
+1		4000		163187	0.036	0.001
+5		4000		163187	0.057	0.001
+10		4000		163187	0.116	0.010
+1		8000		163187	0.041	0.004
+5		8000		163187	0.040	0.000
+10		8000		163187	0.132	0.010
+1		16000	163187	0.029	0.001
+5		16000	163187	0.087	0.002
+10		16000	163187	0.136	0.009
+ 
+hawthorne.txt
+order	#chars	source	mean		sigma
+1		2000		496768	0.142	0.002
+5		2000		496768	0.374	0.024
+10		2000		496768	0.490	0.005
+1		4000		496768	0.096	0.005
+5		4000		496768	0.282	0.025
+10		4000		496768	0.398	0.005
+1		8000		496768	0.080	0.003
+5		8000		496768	0.144	0.000
+10		8000		496768	0.401	0.002
+1		16000	496768	0.087	0.004
+5		16000	496768	0.147	0.002
+10		16000	496768	0.440	0.011
+
+Using EfficientMarkov changes the runtimes significantly and reduces the time necessary
+significantly. Using this class, the longest runtimes for a specific number of characters
+occurs at order 10 instead of at order 1 like before. In this case, there is not a large
+difference between the k-order runtimes as the number of characters change within a source.
+Similarly to problem 1, the runtimes from alice.txt to hawthorne.txt are about doubled. Therefore,
+I will use a similar approach to say that the runtime for 16,000 characters of a 5-order out of
+a 5.5 million character source will be about (0.147)*(2^10) = 150 mean seconds.
 
 %%%%
 PROBLEM 4:
+On average, when running the MarkovDriver with EfficientMarkov Class to generate 5,000
+characters for a 5-order Markov process, 448 characters were generated.
 
 %%%%
 PROBLEM 5:
+
 
 %%%%

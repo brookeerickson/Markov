@@ -11,7 +11,7 @@ import java.util.*;
 public class Benchmark {
 	
 	private static final int TRIALS = 10; // number of trials for each run
-	private static final int MAX_ORDER = 15;
+	private static final int MAX_ORDER = 10;
 	private static final int MIN_ORDER = 1;
 	
 	/**
@@ -21,8 +21,10 @@ public class Benchmark {
 	 * @return a model that implements the proper interface
 	 */
 	private static MarkovInterface<String> getMarkov(int order) {
-		return new MarkovModel(order);
-		//return new EfficientMarkov(order);
+	//private static MarkovInterface<WordGram> EfficientWordMarkov(int order) {
+		//return new MarkovModel(order);
+		return new EfficientMarkov(order);
+		//return new EfficientWordMarkov(order);
 	}
 	
 	/**
@@ -40,6 +42,7 @@ public class Benchmark {
 		for (int i = 0; i < TRIALS; i++) {			
 			double start = System.nanoTime();
 			MarkovInterface<String> model = getMarkov(k);
+		//	MarkovInterface<String> model = new EfficientWordMarkov(k);
 			model.setTraining(source);
 			Thread thread = new Thread(() -> {
 				String dummy = model.getRandomText(textLength);
@@ -101,6 +104,8 @@ public class Benchmark {
 		double[] data;
 		String source = TextSource.textFromFile(file);
 		int[] sizes = {100,200,400,800,1600};
+		//int[] sizes = {2000,4000,8000,16000};
+		//int[] sizes= {5000};
 		
 		for(int size : sizes) {
 			System.out.printf("Varying order, text length %d, source size %d\n",size,source.length());
